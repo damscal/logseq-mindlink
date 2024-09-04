@@ -1,2 +1,2 @@
 # logseq-mindlink
-LLMs with RAG on logseq
+logseq-mindlink is a plugin for logseq that brings LLMs augmented with logseq personal notes. 
