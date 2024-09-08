@@ -1,0 +1,6 @@
+services:
+  app:
+    build: .
+    volumes:
+      - ./:/app
+      - ~/nextcloud-local_sync/static_directory_tree/logseq:/logseq
