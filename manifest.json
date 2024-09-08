@@ -1,0 +1,12 @@
+{
+    "id": "logseq-mindlink",
+    "name": "Logseq Mindlink",
+    "description": "Logseq plugin for integrating LLM with Logseq notes.",
+    "version": "0.1.0",
+    "author": "Your Name",
+    "icon": "./icon.png",
+    "main": "dist/index.js",
+    "scripts": {},
+    "theme": false,
+    "splash": false
+  }

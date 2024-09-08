@@ -1,7 +1,7 @@
 {
     "name": "logseq-mindlink",
     "version": "0.1.0",
-    "description": "Logseq plugin for integrating LLM with Logseq notes.",
+    "description": "Logseq plugin for integrating LLMs with Logseq notes.",
     "main": "dist/index.js",
     "scripts": {
         "build": "tsc",
