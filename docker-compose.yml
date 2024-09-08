@@ -3,7 +3,7 @@ services:
     build: .
     volumes:
       - ./src:/app/src
-      - ~/nextcloud-local_sync/static_directory_tree/logseq:/logseq
+      - ~/nextcloud/local_sync/static_directory_tree/logseq:/logseq
     ports:
       - "3000:3000"  # If your plugin needs to expose a port
     #command: npm run watch  # Automatically rebuild when files change
