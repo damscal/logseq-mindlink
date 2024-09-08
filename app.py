@@ -26,17 +26,13 @@ def load_documents(path):
 documents = load_documents("/logseq/journals")+load_documents("/logseq/pages")
 
 
-#print(help(VectorStoreIndex))
-
-
 from dotenv import load_dotenv
 load_dotenv()
 import os
 cohere_api_key = os.environ["COHERE_API_KEY"]
-#from langchain_cohere import CohereEmbeddings, ChatCohere
+
 from llama_index.embeddings.cohere import CohereEmbedding
 
-#help(CohereEmbedding)
 embed_model = CohereEmbedding(
     api_key=cohere_api_key,
     model_name="embed-multilingual-v3.0",
@@ -61,7 +57,5 @@ index = VectorStoreIndex.from_documents(documents)
 query_engine = index.as_query_engine() #no history preserved
 response = query_engine.query("In che data ho incontrato il geometra Lovecchio?")
 print(response)
-
-quit()
 
 
