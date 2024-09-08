@@ -1,4 +1,0 @@
-python-dotenv
-llama-index
-llama-index-llms-cohere
-llama-index-embeddings-cohere

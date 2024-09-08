@@ -1,11 +1,23 @@
-FROM python:3.12
+# Use the official Node.js image
+FROM node:18-alpine
 
+# Set the working directory inside the container
 WORKDIR /app
 
-COPY requirements.txt /app/
+# Copy package.json and package-lock.json before other files
+COPY package*.json ./
 
-RUN pip install --no-cache-dir -r requirements.txt
+# Install project dependencies
+RUN npm install
 
-COPY . /app/
+# Install TypeScript globally
+RUN npm install -g typescript
 
-CMD ["python", "app.py"]
+# Copy the rest of the application code
+COPY . .
+
+# Build the TypeScript code
+RUN npm run build
+
+# Set the command to run TypeScript compiler in watch mode
+CMD ["npm", "run", "watch"]
