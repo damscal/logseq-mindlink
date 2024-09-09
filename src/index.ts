@@ -1,25 +1,31 @@
-import { logseq } from "@logseq/libs";
+// Import dotenv and configure it
+import * as dotenv from 'dotenv';
+dotenv.config();
+// Access environment variables
+const gemini_api_key = process.env.GOOGLE_API_KEY;
 
-// Register plugin
-logseq.ready(() => {
-  console.log("Logseq Mindlink plugin loaded!");
+// importing classes
+import {
+    SimpleDirectoryReader,
+    VectorStoreIndex,
+    MarkdownReader,
+    Gemini,
+    GEMINI_MODEL,
+    GeminiEmbedding,
+    Settings,
+} from "llamaindex";
 
-    // Import dotenv and configure it
-    import * as dotenv from 'dotenv';
-    dotenv.config();
-    // Access environment variables
-    const gemini_api_key = process.env.GOOGLE_API_KEY;
 
-    // importing classes
-    import {
-        SimpleDirectoryReader,
-        VectorStoreIndex,
-        MarkdownReader,
-        Gemini,
-        GEMINI_MODEL,
-        GeminiEmbedding,
-        Settings,
-    } from "llamaindex";
+import '@logseq/libs';
+
+
+/**
+ * main entry
+*/ 
+async function main () {
+    logseq.UI.showMsg('Logseq Mindlink plugin loaded!');
+    console.log("Logseq Mindlink plugin loaded!");
+  
 
     // define a markdown parser with removeHyperlinks=false and removeImages= false
     const parser = new MarkdownReader(false,false);
@@ -46,12 +52,15 @@ logseq.ready(() => {
 
     const queryEngine = index.asQueryEngine();
 
-    const query = "cosa ho discusso con il geometra Lovecchio?";
+    const query = "cos'è il progetto Raiven?";
 
     const results = await queryEngine.query({
     query,
     });
 
+    logseq.UI.showMsg(results);
     console.log(results);
+}
 
-}).catch(console.error);
+// bootstrap
+logseq.ready(main).catch(console.error);
